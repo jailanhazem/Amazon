@@ -5,7 +5,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class SearchPage {
@@ -17,7 +16,6 @@ public class SearchPage {
     private By SearchBtn = By.id("nav-search-submit-button");
     private By FilterBtn = By.id("searchDropdownBox");
     private By Category = By.cssSelector("#searchDropdownBox > option:nth-child(2)");
-    private By NoResultMsg = By.className("a-row");
 
     // Constructor
     public SearchPage(WebDriver driver) {
@@ -42,7 +40,8 @@ public class SearchPage {
 
     public boolean isNoResultsMessageDisplayed() {
         try {
-            return driver.findElement(By.id("noResultsMessageId")).isDisplayed(); // Adjust locator as necessary
+            return driver.findElement(By.className("a-row")).isDisplayed(); // Adjust locator as necessary
+
         } catch (NoSuchElementException e) {
             return false;
         }
